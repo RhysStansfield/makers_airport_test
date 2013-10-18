@@ -31,6 +31,13 @@ describe Plane do
     plane.land_at airport
   end
 
+  it 'can check that it is landed' do
+    airport = Airport.new
+    Airport.any_instance.stub(:stormy?) { false }
+    plane.land_at airport
+    expect(plane.landed_at? airport).to be_true
+  end
+
   it 'changes its status to landed when at airport' do
     airport = Airport.new
     Airport.any_instance.stub(:stormy?) { false }

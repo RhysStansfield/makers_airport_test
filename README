@@ -3,6 +3,15 @@ Simple airport control program made for Makers Academy Week 3 test
 Currently includes:
 
         * airport_spec.rb
+        * plane_spec.rb
+        * grand_finale_spec.rb
         * airport.rb
         * plane.rb
         * weather.rb
+        * airport_plane.rb
+
+The randomly generated weather currently has a 1 in 5 chance of being stormy.  You can make it more likely to be stormy
+by changing the integer on line 8 of the weather.rb module to something higher than 3, up to a maximum of 9.
+
+The airport_plane.rb file is simply a helper document for loading all requirements into IRB in one go - it has no
+functionality beyond that.

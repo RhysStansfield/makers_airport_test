@@ -3,7 +3,7 @@ require 'plane'
 
 describe "The grand finale (last spec)" do
 
-  # Monster mega test of doom with no fewer than four expects in...oh dear...
+  # Monster-mega-test-'o'-doom - with no fewer than four expects in...oh dear...
 
   it 'all planes can land and all planes can take off' do
     airport = Airport.new
