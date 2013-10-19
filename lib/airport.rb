@@ -7,16 +7,27 @@ class Airport
   attr_reader :planes
 
   def initialize
+    puts 'New flight control shift starting'
     @planes = []
     @capacity = 6
   end
 
   def land plane
-    @planes << plane unless full? || stormy?
+    if full? || stormy?
+      puts "Weather unsafe for landing at the moment!"
+    else
+      @planes << plane
+      puts 'Plane successfully landed!'
+    end
   end
 
   def release plane
-    @planes.delete(plane) unless stormy?
+    if stormy?
+      puts 'Weather unsafe for take-off at the moment!'
+    else
+      puts 'Plane departed successfully!'
+      @planes.delete(plane)
+    end
   end
 
   def planes_count

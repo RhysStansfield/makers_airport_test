@@ -3,14 +3,15 @@ class Plane
   attr_accessor :flying
 
   def initialize
+    puts 'New flight inbound'
     @flying = true
   end
 
   def flying_status
     if flying
-      "Now flying"
+      'The plane is currently flying'
     else
-      "Now landed"
+      'The plane is currently landed'
     end
   end
 
@@ -22,6 +23,7 @@ class Plane
   end
 
   def take_off_from airport
+    return 'Already flying!' if flying
     airport.release self
     @flying = true unless landed_at? airport
     puts flying_status

@@ -10,8 +10,11 @@ Currently includes:
         * weather.rb
         * airport_plane.rb
 
-The randomly generated weather currently has a 1 in 5 chance of being stormy.  You can make it more likely to be stormy
-by changing the integer on line 8 of the weather.rb module to something higher than 3, up to a maximum of 9.
+The randomly generated weather currently has a 1 in 5 chance of being stormy.  You can make it more likely to be stormy by changing the integer on line 8 of the weather.rb module to something higher than 3, up to a maximum of 9.
 
-The airport_plane.rb file is simply a helper document for loading all requirements into IRB in one go - it has no
-functionality beyond that.
+The airport_plane.rb file is simply a helper document for loading all requirements into IRB in one go - it has no functionality beyond that.
+
+Note: dev branch for messing around with extra features 
+        - fixed bug where multiples of the same planes could land and take off after having already landed or already taken off.
+        - made program more verbal telling you what it's doing
+        - still want to work out how to test for randomness

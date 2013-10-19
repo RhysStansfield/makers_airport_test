@@ -6,21 +6,23 @@ describe Plane do
   let(:plane) { Plane.new }
   
   it 'has a flying status when created' do
-    expect(plane.flying_status).to eq 'Now flying'
+    expect(plane.flying_status).to eq 'The plane is currently flying'
   end
   
   it 'has a flying status when in the air' do
     plane.flying
-    expect(plane.flying_status).to eq 'Now flying'
+    expect(plane.flying_status).to eq 'The plane is currently flying'
   end
 
   it 'has a landed status when not in the air' do
     plane.flying = false
-    expect(plane.flying_status).to eq 'Now landed'
+    expect(plane.flying_status).to eq 'The plane is currently landed'
   end
   
   it 'can take off' do
     airport = double :airport, { release: nil, planes: [] }
+    plane = Plane.new
+    plane.flying = false
     expect(airport).to receive(:release)
     plane.take_off_from airport
   end
@@ -29,6 +31,17 @@ describe Plane do
     airport = double :airport, { planes: [] }
     expect(airport).to receive(:land).with(plane)
     plane.land_at airport
+  end
+
+  it "can't land if already landed" do
+    airport = double :airport, { release: nil, planes: [] }
+    plane.flying= false
+    expect(plane.land_at(airport)).to eq 'Already landed!'
+  end
+
+  it "can't take off if already flying" do
+    airport = double :airport, { release: nil, planes: [] }
+    expect(plane.take_off_from(airport)).to eq 'Already flying!'
   end
 
   it 'can check that it is landed' do
@@ -42,7 +55,7 @@ describe Plane do
     airport = Airport.new
     Airport.any_instance.stub(:stormy?) { false }
     plane.land_at airport
-    expect(plane.flying_status).to eq 'Now landed'
+    expect(plane.flying_status).to eq 'The plane is currently landed'
   end
   
   it 'changes its status to flying after taking of' do
@@ -50,6 +63,7 @@ describe Plane do
     Airport.any_instance.stub(:stormy?) { false }
     plane.land_at airport
     plane.take_off_from airport
-    expect(plane.flying_status).to eq 'Now flying'
+    expect(plane.flying_status).to eq 'The plane is currently flying'
   end
+
 end
