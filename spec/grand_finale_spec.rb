@@ -20,13 +20,13 @@ describe "The grand finale (last spec)" do
       end
     end
     expect(airport.full?).to be_true
-    expect(plane1.flying_status).to eq 'landed'
+    expect(plane1.flying_status).to eq 'Now landed'
     planes.each do |plane|
       until plane.flying == true
         plane.take_off_from airport
       end
     end
     expect(airport.planes_count).to be 0
-    expect(plane1.flying_status).to eq 'flying'
+    expect(plane1.flying_status).to eq 'Now flying'
   end
 end

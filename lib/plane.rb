@@ -7,18 +7,24 @@ class Plane
   end
 
   def flying_status
-    return 'flying' if flying == true
-    'landed'
+    if flying
+      "Now flying"
+    else
+      "Now landed"
+    end
   end
 
   def land_at airport
+    return 'Already landed!' if flying == false
     airport.land self
     @flying = false if landed_at? airport
+    puts flying_status
   end
 
   def take_off_from airport
     airport.release self
     @flying = true unless landed_at? airport
+    puts flying_status
   end
 
   def landed_at? airport
